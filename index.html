@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalkSpark - Deep Conversations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        /* Default (Light) */
+        --bg-canvas: #f8fafc;
+        --bg-card: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --color-primary: #4f46e5;
+        --border-base: #e2e8f0;
+      }
+
+      /* Dark Theme */
+      [data-theme='dark'] {
+        --bg-canvas: #0f172a;
+        --bg-card: #1e293b;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --color-primary: #818cf8;
+        --border-base: #334155;
+      }
+
+      /* Nord Theme */
+      [data-theme='nord'] {
+        --bg-canvas: #2E3440;
+        --bg-card: #3B4252;
+        --text-main: #ECEFF4;
+        --text-muted: #D8DEE9;
+        --color-primary: #88C0D0;
+        --border-base: #4C566A;
+      }
+
+      /* Dracula Theme */
+      [data-theme='dracula'] {
+        --bg-canvas: #282A36;
+        --bg-card: #44475A;
+        --text-main: #F8F8F2;
+        --text-muted: #BD93F9;
+        --color-primary: #FF79C6;
+        --border-base: #6272A4;
+      }
+
+      body {
+        font-family: 'Atkinson Hyperlegible Next', 'Inter', sans-serif;
+        background-color: var(--bg-canvas);
+        color: var(--text-main);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Custom Scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-canvas); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-base); 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted); 
+      }
+    </style>
+    
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // We will toggle 'dark' class on body for dark modes
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Atkinson Hyperlegible Next"', 'Inter', 'sans-serif'],
+            },
+            colors: {
+              canvas: 'var(--bg-canvas)',
+              card: 'var(--bg-card)',
+              main: 'var(--text-main)',
+              muted: 'var(--text-muted)',
+              primary: 'var(--color-primary)',
+              border: 'var(--border-base)',
+            }
+          }
+        }
+      }
+    </script>
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
+      }
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

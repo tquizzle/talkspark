@@ -1,0 +1,29 @@
+name = "talkspark"
+compatibility_date = "2026-05-29"
+
+[pages]
+  branch = "main"
+  [pages.namespaces]
+    binding = "TALKSPARK_STARTERS"
+  [pages.namespaces]
+    binding = "TALKSPARK_PENDING"
+  [pages.namespaces]
+    binding = "TALKSPARK_THEMES"
+
+[vars]
+  USE_REAL_API = "true"
+
+[env.production]
+  vars = { USE_REAL_API = "true" }
+
+[env.staging]
+  vars = { USE_REAL_API = "false" }
+
+[[kv_namespaces]]
+  binding = "TALKSPARK_STARTERS"
+
+[[kv_namespaces]]
+  binding = "TALKSPARK_PENDING"
+
+[[kv_namespaces]]
+  binding = "TALKSPARK_THEMES"

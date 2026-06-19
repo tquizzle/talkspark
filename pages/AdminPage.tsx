@@ -104,7 +104,7 @@ import React, { useEffect, useState } from 'react';
                         className="w-full px-5 py-4 rounded-lg bg-canvas border border-border focus:ring-2 focus-ring-primary/20 focus:border-primary text-main placeholder-muted outline-none"
                         value={editForm.text}
                         onChange={(e) => setEditForm({...editForm, text: e.target.value})}
-                        min-h=[120]
+                        min-h="120"
                       />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

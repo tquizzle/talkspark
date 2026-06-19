@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Starter } from '../types';
-import { CATEGORY_COLORS, CATEGORY_ICONS } from '../constants';
+import { getCategoryClasses, CATEGORY_ICONS } from '../constants';
 import { Icon } from './Icon';
 
 interface Props {
@@ -10,13 +10,9 @@ interface Props {
 }
 
 export const StarterCard: React.FC<Props> = ({ starter, onClick, featured = false }) => {
-  const baseColor = CATEGORY_COLORS[starter.category] || "gray";
+  const { badge: badgeClass } = getCategoryClasses(starter.category);
   const iconName = CATEGORY_ICONS[starter.category] || "MessageCircle";
   const [copied, setCopied] = useState(false);
-
-  // Dynamic class generation for badges to support dark mode/themes gracefully
-  // We use the base color to generate Tailwind utility classes
-  const badgeClass = `bg-${baseColor}-500/10 text-${baseColor}-600 dark:text-${baseColor}-400 border border-${baseColor}-500/20`;
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -64,17 +60,17 @@ export const StarterCard: React.FC<Props> = ({ starter, onClick, featured = fals
         </span>
         
         <div className="flex items-center gap-1">
-          <button 
+          <button
             onClick={handleShare}
-            className="text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-canvas"
+            className="text-slate-400 dark:text-slate-500 hover:bg-primary/10 hover:text-primary active:bg-primary/20 active:-translate-y-px transition-all duration-200 px-5 py-2 rounded-md"
             title="Share"
           >
             <Icon name="Share2" size={16} />
           </button>
           
-          <button 
+          <button
             onClick={handleCopy}
-            className="text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-canvas"
+            className="text-slate-400 dark:text-slate-500 hover:bg-primary/10 hover:text-primary active:bg-primary/20 active:-translate-y-px transition-all duration-200 px-5 py-2 rounded-md"
             title="Copy to clipboard"
           >
             {copied ? (
@@ -93,7 +89,7 @@ export const StarterCard: React.FC<Props> = ({ starter, onClick, featured = fals
       <div className="mt-auto pt-4 flex items-center justify-between text-xs text-muted font-medium uppercase tracking-wider">
         <span>{starter.focus}</span>
         {featured && (
-          <span className="flex items-center gap-1 text-primary animate-pulse">
+          <span className="flex items-center gap-1 text-primary float-animation">
             <Icon name="Sparkles" size={14} />
             Featured
           </span>

@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* Custom dark mode variant using class selector (for multi-theme support) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme tokens mapped to CSS custom properties */
+@theme {
+  --color-canvas: var(--theme-bg-canvas);
+  --color-card: var(--theme-bg-card);
+  --color-main: var(--theme-text-main);
+  --color-muted: var(--theme-text-muted);
+  --color-primary: var(--theme-color-primary);
+  --color-border: var(--theme-border-base);
+  --font-sans: 'Atkinson Hyperlegible Next', sans-serif;
+}
+
+/* Light theme (default) */
+:root {
+  --theme-bg-canvas: #f8fafc;
+  --theme-bg-card: #ffffff;
+  --theme-text-main: #0f172a;
+  --theme-text-muted: #64748b;
+  --theme-color-primary: #4f46e5;
+  --theme-border-base: #e2e8f0;
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+  --theme-bg-canvas: #0f172a;
+  --theme-bg-card: #1e293b;
+  --theme-text-main: #f1f5f9;
+  --theme-text-muted: #94a3b8;
+  --theme-color-primary: #818cf8;
+  --theme-border-base: #334155;
+}
+
+/* Nord Theme */
+[data-theme='nord'] {
+  --theme-bg-canvas: #2E3440;
+  --theme-bg-card: #3B4252;
+  --theme-text-main: #ECEFF4;
+  --theme-text-muted: #D8DEE9;
+  --theme-color-primary: #88C0D0;
+  --theme-border-base: #4C566A;
+}
+
+/* Dracula Theme */
+[data-theme='dracula'] {
+  --theme-bg-canvas: #282A36;
+  --theme-bg-card: #44475A;
+  --theme-text-main: #F8F8F2;
+  --theme-text-muted: #BD93F9;
+  --theme-color-primary: #FF79C6;
+  --theme-border-base: #6272A4;
+}
+
+body {
+  background-color: var(--theme-bg-canvas);
+  color: var(--theme-text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--theme-bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-border-base);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-text-muted);
+}
+
+/* Float animation for featured items */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Button pulse animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Spring physics-based transition (approximation of stiffness: 100, damping: 20) */
+.spring-transition {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Micro-interaction hover effects */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Staggered animation delay utility */
+.delay-50 {
+  animation-delay: 50ms;
+}
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-150 {
+  animation-delay: 150ms;
+}
